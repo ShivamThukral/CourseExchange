@@ -11,4 +11,21 @@
     <string name="action_example">Example action</string>
 
     <string name="action_settings">Settings</string>
+
+    <!-- Main menu_speakers -->
+    <string name="menu_course_feed">Course Feed</string>
+    <string name="menu_my_courses">My Courses</string>
+    <string name="menu_all_courses">All Courses</string>
+    <string name="menu_discover">Discover</string>
+    <string name="menu_streams">Streams</string>
+    <string name="menu_Settings">Settings</string>
+    <string name="menu_AboutUs">About Us</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Hamburger Animation -->
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+
+
 </resources>
