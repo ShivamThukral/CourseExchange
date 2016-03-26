@@ -154,29 +154,28 @@ public class MainActivity extends AppCompatActivity
                  Class fragmentClass;
                  switch(menuItem.getItemId()) {
                      case R.id.nav_myCourses:
-                         //fragmentClass = FirstFragment.class;
+                         fragment = MyCoursesFragment.newInstance();
                          break;
                      case R.id.nav_allCourses:
-                         //fragmentClass = SecondFragment.class;
+                         fragment = AllCoursesFragment.newInstance();
                          break;
                      case R.id.nav_courseFeed:
-                         //fragmentClass = ThirdFragment.class;
+                         fragment = CourseFeedFragment.newInstance();
                          break;
                      case R.id.nav_aboutUs:
-                         //fragmentClass = ThirdFragment.class;
+                         fragment = AboutUsFragment.newInstance();
                          break;
-                     case R.id.nav_settings:
-                         //fragmentClass = ThirdFragment.class;
+                     case R.id.nav_help:
+                         fragment = HelpFragment.newInstance();
                          break;
                      case R.id.nav_discover:
-                         //fragmentClass = ThirdFragment.class;
+                         fragment = DiscoverFragment.newInstance();
                          break;
                      case R.id.nav_Streams:
-                         //fragmentClass = ThirdFragment.class;
+                           fragment = StreamsFragment.newInstance();
                          break;
-
                      default:
-                         //fragmentClass = FirstFragment.class;
+                         fragment = BlankFragment.newInstance();
                  }
 
                  try {

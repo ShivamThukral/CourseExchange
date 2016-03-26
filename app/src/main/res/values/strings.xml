@@ -18,11 +18,23 @@
     <string name="menu_all_courses">All Courses</string>
     <string name="menu_discover">Discover</string>
     <string name="menu_streams">Streams</string>
-    <string name="menu_Settings">Settings</string>
+    <string name="menu_Help">Help</string>
     <string name="menu_AboutUs">About Us</string>
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="stream_fragment">Hello Stream Fragment</string>
+    <string name="course_feed_fragment">Hello Course Feed Fragment</string>
+    <string name="all_courses_fragment">Hello All Courses Fragment</string>
+    <string name="discover_fragment">Hello Discover Fragment</string>
+    <string name="my_courses_fragment">Hello My Courses Fragment</string>
+    <string name="about_us_fragment">Hello About us Fragment</string>
+    <string name="help_fragment">Hello Help Fragment</string>
+
+
+
+
+
     <!-- Hamburger Animation -->
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>

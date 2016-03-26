@@ -3,7 +3,7 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_courseFeed"
-            android:icon="@drawable/ic_view_module_black_24dp"
+            android:icon="@drawable/ic_subject_black_24dp"
             android:checked="false"
             android:title="@string/menu_course_feed" />
 
@@ -14,30 +14,30 @@
             android:title="@string/menu_my_courses" />
         <item
             android:id="@+id/nav_allCourses"
-            android:icon="@drawable/ic_view_module_black_24dp"
+            android:icon="@drawable/ic_list_black_24dp"
             android:checked="false"
             android:title="@string/menu_all_courses" />
         <item
             android:id="@+id/nav_discover"
-            android:icon="@drawable/ic_view_module_black_24dp"
+            android:icon="@drawable/ic_lightbulb_outline_black_24dp"
             android:checked="false"
             android:title="@string/menu_discover" />
         <item
             android:id="@+id/nav_Streams"
-            android:icon="@drawable/ic_view_module_black_24dp"
+            android:icon="@drawable/ic_view_stream_black_24dp"
             android:checked="false"
             android:title="@string/menu_streams" />
     </group>
     <item android:title="Others">
         <menu>
             <item
-                android:id="@+id/nav_settings"
-                android:icon="@drawable/ic_view_module_black_24dp"
+                android:id="@+id/nav_help"
+                android:icon="@drawable/ic_help_black_24dp"
                 android:checked="false"
-                android:title="@string/menu_Settings" />
+                android:title="@string/menu_Help" />
             <item
                 android:id="@+id/nav_aboutUs"
-                android:icon="@drawable/ic_view_module_black_24dp"
+                android:icon="@drawable/ic_info_black_24dp"
                 android:checked="false"
                 android:title="@string/menu_AboutUs" />
         </menu>
