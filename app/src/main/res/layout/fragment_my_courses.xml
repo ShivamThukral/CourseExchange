@@ -1,10 +1,29 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.student.courseexchange.MyCoursesFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    &lt;!&ndash; TODO: Update blank fragment layout &ndash;&gt;
     <TextView android:layout_width="match_parent" android:layout_height="match_parent"
         android:text="@string/my_courses_fragment" />
 
-</FrameLayout>
+</FrameLayout>-->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GridViewFragment" >
+
+    <GridView android:id="@+id/gridView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:columnWidth="60dp"
+        android:numColumns="2"
+        android:verticalSpacing="50dp"
+        android:horizontalSpacing="10dp"
+        android:stretchMode="columnWidth"
+        android:longClickable="false"
+        android:gravity="center" />
+
+</RelativeLayout>
