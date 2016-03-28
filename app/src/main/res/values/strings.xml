@@ -39,5 +39,18 @@
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
 
+    <!--List View Data-->
+    <string name="dhcs_txt">Designing Human Centered Systems</string>
+    <string name="dhcs_dsc">CSE 501 (Ponnurangam Kumaraguru)</string>
+    <string name="number_theory_txt">Number Theory</string>
+    <string name="number_theory_dsc">MTH 502 (Somitra Sandhya)</string>
+    <string name="graph_theory_txt">Graph Theory</string>
+    <string name="graph_theory_dsc">MTH 303 (Somitra Sandhya)</string>
+
+    <string name="icon_content_description">Sample Icon</string>
+
+
+
+
 
 </resources>

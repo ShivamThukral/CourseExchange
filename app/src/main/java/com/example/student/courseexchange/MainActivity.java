@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity
              private DrawerLayout mDrawer;
              private Toolbar toolbar;
              private NavigationView nvDrawer;
-             Fragment fragment = BlankFragment.newInstance();
+             Fragment fragment = new BlankFragment();
              ActionBarDrawerToggle drawerToggle;
              @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -172,10 +172,11 @@ public class MainActivity extends AppCompatActivity
                          fragment = DiscoverFragment.newInstance();
                          break;
                      case R.id.nav_Streams:
-                           fragment = StreamsFragment.newInstance();
+                           //fragment = StreamsFragment.newInstance();
+                         fragment = new BlankFragment();
                          break;
                      default:
-                         fragment = BlankFragment.newInstance();
+                         fragment = new BlankFragment();
                  }
 
                  try {
