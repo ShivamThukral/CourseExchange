@@ -110,12 +110,12 @@ public class StreamsFragment extends Fragment implements AdapterView.OnItemClick
         mItems = new ArrayList<GridViewItem3>();
         Resources resources = getResources();
 
-        mItems.add(new GridViewItem3(resources.getDrawable(R.drawable.letter_m), getString(R.string.action_settings21)));
-        mItems.add(new GridViewItem3(resources.getDrawable(R.drawable.letter_s), getString(R.string.action_settings22)));
-        mItems.add(new GridViewItem3(resources.getDrawable(R.drawable.letter_i), getString(R.string.action_settings23)));
-        mItems.add(new GridViewItem3(resources.getDrawable(R.drawable.letter_t), getString(R.string.action_settings24)));
-        mItems.add(new GridViewItem3(resources.getDrawable(R.drawable.letter_d), getString(R.string.action_settings25)));
-        mItems.add(new GridViewItem3(resources.getDrawable(R.drawable.letter_c), getString(R.string.action_settings26)));
+        mItems.add(new GridViewItem3(resources.getDrawable(R.drawable.ic_letter_m), getString(R.string.action_settings21)));
+        mItems.add(new GridViewItem3(resources.getDrawable(R.drawable.ic_letter_s), getString(R.string.action_settings22)));
+        mItems.add(new GridViewItem3(resources.getDrawable(R.drawable.ic_letter_i), getString(R.string.action_settings23)));
+        mItems.add(new GridViewItem3(resources.getDrawable(R.drawable.ic_letter_t), getString(R.string.action_settings24)));
+        mItems.add(new GridViewItem3(resources.getDrawable(R.drawable.ic_letter_d), getString(R.string.action_settings25)));
+        mItems.add(new GridViewItem3(resources.getDrawable(R.drawable.atream_a), getString(R.string.action_settings26)));
 
         // mItems.add(new GridViewItem(resources.getDrawable(R.drawable.youtube), getString(R.string.youtube)));
     }

@@ -103,12 +103,12 @@ public class MyCoursesFragment extends Fragment implements AdapterView.OnItemCli
         mItems = new ArrayList<GridViewItem>();
         Resources resources = getResources();
 
-        mItems.add(new GridViewItem(resources.getDrawable(R.drawable.ic_monsoon13), getString(R.string.action_settings1)));
-        mItems.add(new GridViewItem(resources.getDrawable(R.drawable.ic_monsoon14), getString(R.string.action_settings2)));
-        mItems.add(new GridViewItem(resources.getDrawable(R.drawable.ic_summer14), getString(R.string.action_settings3)));
-        mItems.add(new GridViewItem(resources.getDrawable(R.drawable.ic_winter13), getString(R.string.action_settings4)));
-        mItems.add(new GridViewItem(resources.getDrawable(R.drawable.ic_winter14), getString(R.string.action_settings5)));
-        mItems.add(new GridViewItem(resources.getDrawable(R.drawable.ic_winter15), getString(R.string.action_settings6)));
+        mItems.add(new GridViewItem(resources.getDrawable(R.drawable.ic_monsoon_13), getString(R.string.action_settings1)));
+        mItems.add(new GridViewItem(resources.getDrawable(R.drawable.ic_monsoon_14), getString(R.string.action_settings2)));
+        mItems.add(new GridViewItem(resources.getDrawable(R.drawable.ic_summer_14), getString(R.string.action_settings3)));
+        mItems.add(new GridViewItem(resources.getDrawable(R.drawable.ic_winter_13), getString(R.string.action_settings4)));
+        mItems.add(new GridViewItem(resources.getDrawable(R.drawable.ic_winter_14), getString(R.string.action_settings5)));
+        mItems.add(new GridViewItem(resources.getDrawable(R.drawable.ic_winter_15), getString(R.string.action_settings6)));
 
         // mItems.add(new GridViewItem(resources.getDrawable(R.drawable.youtube), getString(R.string.youtube)));
     }

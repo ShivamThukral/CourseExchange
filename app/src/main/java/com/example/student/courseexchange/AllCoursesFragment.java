@@ -102,7 +102,7 @@ public class AllCoursesFragment extends Fragment implements AdapterView.OnItemCl
         Resources resources = getResources();
 
         mItems.add(new GridViewItem2(resources.getDrawable(R.drawable.ic_core_courses), getString(R.string.action_settings11)));
-        mItems.add(new GridViewItem2(resources.getDrawable(R.drawable.ic_hss_courses), getString(R.string.action_settings12)));
+        mItems.add(new GridViewItem2(resources.getDrawable(R.drawable.ic_hss), getString(R.string.action_settings12)));
         mItems.add(new GridViewItem2(resources.getDrawable(R.drawable.ic_tech_courses), getString(R.string.action_settings13)));
         mItems.add(new GridViewItem2(resources.getDrawable(R.drawable.ic_non_tech_courses), getString(R.string.action_settings14)));
         mItems.add(new GridViewItem2(resources.getDrawable(R.drawable.ic_online_courses), getString(R.string.action_settings15)));
