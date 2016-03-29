@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:gravity="center"
-    android:padding="5dp"
+    android:padding="00dp"
     android:background="@color/frame_background"
     android:orientation="vertical"
     android:verticalSpacing="00dp"
@@ -24,6 +24,9 @@
         android:contentDescription="@string/icon_content_description"
         android:scaleType="fitXY"
         android:adjustViewBounds="true"
+        android:padding="-10dp"
+         android:verticalSpacing="00dp"
+         android:horizontalSpacing="00dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true" />
 
