@@ -4,7 +4,15 @@
     tools:context="com.example.student.courseexchange.AllCoursesFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-        android:text="@string/all_courses_fragment" />
+    <GridView android:id="@+id/gridView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:columnWidth="60dp"
+        android:numColumns="2"
+        android:verticalSpacing="50dp"
+        android:horizontalSpacing="10dp"
+        android:stretchMode="columnWidth"
+        android:longClickable="false"
+        android:gravity="center" />
 
 </FrameLayout>

@@ -9,8 +9,27 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_example">Example action</string>
-
     <string name="action_settings">Settings</string>
+    <string name="action_settings1">Monsoon13</string>
+    <string name="action_settings2">Monsoon14</string>
+    <string name="action_settings3">Summer14</string>
+    <string name="action_settings4">Winter13</string>
+    <string name="action_settings5">Winter14</string>
+    <string name="action_settings6">Winter15</string>
+
+    <string name="action_settings11">Core Courses</string>
+    <string name="action_settings12">HSS Courses</string>
+    <string name="action_settings13">Tech Courses</string>
+    <string name="action_settings14">Non-Tech Courses</string>
+    <string name="action_settings15">Online Courses</string>
+    <string name="action_settings16">Summer Courses</string>
+
+    <string name="action_settings21">Mobile Computing</string>
+    <string name="action_settings22">Security</string>
+    <string name="action_settings23">Image Analysis</string>
+    <string name="action_settings24">Theory</string>
+    <string name="action_settings25">Data Analytics</string>
+    <string name="action_settings26">Computer Architecture</string>
 
     <!-- Main menu_speakers -->
     <string name="menu_course_feed">Course Feed</string>

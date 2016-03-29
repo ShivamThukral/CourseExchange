@@ -1,10 +1,8 @@
 package com.example.student.courseexchange;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -105,12 +103,12 @@ public class MyCoursesFragment extends Fragment implements AdapterView.OnItemCli
         mItems = new ArrayList<GridViewItem>();
         Resources resources = getResources();
 
-        mItems.add(new GridViewItem(resources.getDrawable(R.drawable.ic_grid_view_w_15_icon), getString(R.string.action_settings)));
-        mItems.add(new GridViewItem(resources.getDrawable(R.drawable.ic_help_black_24dp), getString(R.string.action_settings)));
-        mItems.add(new GridViewItem(resources.getDrawable(R.drawable.ic_help_black_24dp), getString(R.string.action_settings)));
-        mItems.add(new GridViewItem(resources.getDrawable(R.drawable.ic_help_black_24dp), getString(R.string.action_settings)));
-        mItems.add(new GridViewItem(resources.getDrawable(R.drawable.ic_help_black_24dp), getString(R.string.action_settings)));
-        mItems.add(new GridViewItem(resources.getDrawable(R.drawable.ic_help_black_24dp), getString(R.string.action_settings)));
+        mItems.add(new GridViewItem(resources.getDrawable(R.drawable.ic_monsoon13), getString(R.string.action_settings1)));
+        mItems.add(new GridViewItem(resources.getDrawable(R.drawable.ic_monsoon14), getString(R.string.action_settings2)));
+        mItems.add(new GridViewItem(resources.getDrawable(R.drawable.ic_summer14), getString(R.string.action_settings3)));
+        mItems.add(new GridViewItem(resources.getDrawable(R.drawable.ic_winter13), getString(R.string.action_settings4)));
+        mItems.add(new GridViewItem(resources.getDrawable(R.drawable.ic_winter14), getString(R.string.action_settings5)));
+        mItems.add(new GridViewItem(resources.getDrawable(R.drawable.ic_winter15), getString(R.string.action_settings6)));
 
         // mItems.add(new GridViewItem(resources.getDrawable(R.drawable.youtube), getString(R.string.youtube)));
     }

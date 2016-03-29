@@ -1,7 +1,7 @@
 package com.example.student.courseexchange;
 
-import android.app.Activity;
 import android.content.res.Configuration;
+import android.graphics.Typeface;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -9,19 +9,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
@@ -38,6 +30,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
                  // Set a Toolbar to replace the ActionBar.
                  toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -172,8 +165,8 @@ public class MainActivity extends AppCompatActivity
                          fragment = DiscoverFragment.newInstance();
                          break;
                      case R.id.nav_Streams:
-                           //fragment = StreamsFragment.newInstance();
-                         fragment = new BlankFragment();
+                         fragment = StreamsFragment.newInstance();
+                        // fragment = new BlankFragment();
                          break;
                      default:
                          fragment = new BlankFragment();
