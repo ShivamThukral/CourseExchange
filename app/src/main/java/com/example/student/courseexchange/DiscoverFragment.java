@@ -23,26 +23,32 @@ class ExpandableListDataPump {
     public static HashMap<String, List<String>> getData() {
         HashMap<String, List<String>> expandableListDetail = new HashMap<String, List<String>>();
 
-        List<String> technology = new ArrayList<String>();
-        technology.add("Graph Theory");
-        technology.add("Logic in Computer Science");
-        technology.add("Verification of Randomised Alogrithms");
+        List<String> dm = new ArrayList<String>();
+        dm.add("Graph Theory");
+        dm.add("Number Theory");
+        dm.add("Theory of Computation");
+        dm.add("Logic in Computer Science");
 
-        List<String> entertainment = new ArrayList<String>();
-        entertainment.add("Applied Cryptography");
-        entertainment.add("Theory of Modern Cryptography");
-        entertainment.add("Foundations of Computer Security");
+        List<String> nt = new ArrayList<String>();
+        nt.add("Applied Cryptography");
+        nt.add("Theory of Modern Cryptography");
+        nt.add("Abstract Algebra");
 
-        List<String> science = new ArrayList<String>();
-        science.add("Eggshell may act like sunblock");
-        science.add("Brain hub predicts negative events");
-        science.add("California hit by raging wildfires");
-        science.add("Rosetta's comet seen in close-up");
-        science.add("Secret of sandstone shapes revealed");
+        List<String> mc = new ArrayList<String>();
+        mc.add("Mobile and Web Middleware");
+        mc.add("Embedded Systems");
+        mc.add("Mobile Cellular Network Security");
+        mc.add("Advanced Mobile Computing");
 
-        expandableListDetail.put("DISCRETE MATHS", technology);
-        expandableListDetail.put("NUMBER THEORY", entertainment);
-        expandableListDetail.put("SCIENCE & ENVIRONMENT NEWS", science);
+        List<String> dsa = new ArrayList<>();
+        dsa.add("Analysis & Design of Algorithms");
+        dsa.add("Modern Algorithm Design");
+        dsa.add("Randomised Algorithms");
+
+        expandableListDetail.put("DISCRETE MATHS", dm);
+        expandableListDetail.put("NUMBER THEORY", nt);
+        expandableListDetail.put("MOBILE COMPUTING", mc);
+        expandableListDetail.put("DATA STRUCTURE & ALGORITHM", dsa);
         return expandableListDetail;
     }
 }

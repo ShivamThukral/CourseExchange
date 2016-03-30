@@ -19,6 +19,9 @@ import butterknife.Bind;
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
+    public static String email="";
+    public static String password="";
+    public static String rollNumber="";
 
     @Bind(R.id.input_email) EditText _emailText;
     @Bind(R.id.input_password) EditText _passwordText;
@@ -66,9 +69,11 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.setMessage("Authenticating...");
         progressDialog.show();
 
-        String email = _emailText.getText().toString();
-        String password = _passwordText.getText().toString();
-
+        email = _emailText.getText().toString();
+        password = _passwordText.getText().toString();
+        int ind = email.indexOf('1');
+        rollNumber = "20"+email.substring(ind, ind+5);
+        System.out.println(rollNumber);
         // TODO: Implement your own authentication logic here.
 
         new android.os.Handler().postDelayed(
@@ -102,8 +107,6 @@ else
     {
         boolean valid = false;
         String iiitd="@iiitd.ac.in";
-        String email = _emailText.getText().toString();
-        String password = _passwordText.getText().toString();
 
         if(email.toLowerCase().contains(iiitd.toLowerCase()))
         {

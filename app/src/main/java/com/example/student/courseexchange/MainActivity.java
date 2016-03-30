@@ -29,7 +29,24 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.HashMap;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.app.ListActivity;
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,17 +60,25 @@ public class MainActivity extends AppCompatActivity {
 
     JSONParser jsonParser = new JSONParser();
 
-    private static final String FEEDBACK_URL = "http://192.168.1.4/webservice/add_feedback.php";
+    private static final String ADD_FEEDBACK_URL = "http://192.168.1.4/webservice/add_feedback.php";
+    private static final String READ_FEEDBACK_URL = "http://192.168.1.4/webservice/read_feedback.php";
 
-    //JSON element ids from repsonse of php script:
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
+
+    private static final String TAG_UPVOTE = "upvote";
+    private static final String TAG_DOWNVOTE = "downvote";
+    private static final String TAG_NAME = "name";
+    private static final String TAG_REVIEW = "review";
+    private static final String TAG_POSTS = "posts";
+
+    private JSONArray mComments = null;
+    public static ArrayList<HashMap<String, String>> mCommentList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         // Set a Toolbar to replace the ActionBar.
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -71,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
         // Setup drawer view
         setupDrawerContent(nvDrawer);
 
+        new insertCourseSpecs().execute();
 
     }
 
@@ -177,9 +203,11 @@ public class MainActivity extends AppCompatActivity {
             case R.id.nav_allCourses:
                 fragment = AllCoursesFragment.newInstance();
                 break;
-            case R.id.nav_courseFeed:
+            case R.id.nav_courseFeed: {
+                new insertCourseSpecs().execute();
                 fragment = CourseFeedFragment.newInstance();
-                break;
+            }
+            break;
             case R.id.nav_aboutUs:
                 fragment = AboutUsFragment.newInstance();
                 break;
@@ -218,34 +246,12 @@ public class MainActivity extends AppCompatActivity {
         mDrawer.closeDrawers();
     }
 
-    String feedBack, rollNumber, grade, load, heavy;
 
-    public void submitFeed(View view) {
-        EditText et=(EditText)findViewById(R.id.feedbackEditText);
-        feedBack=et.getText().toString();
-
-        Spinner lsp = (Spinner)findViewById(R.id.loadSpinner);
-        load = lsp.getSelectedItem().toString();
-
-        Spinner gsp = (Spinner)findViewById(R.id.avGradeSpinner);
-        grade = gsp.getSelectedItem().toString();
-
-        RadioButton rb = (RadioButton)findViewById(R.id.yesProjectButton);
-        if(rb.isSelected()){
-            heavy = "1";
-        }else{
-            heavy = "0";
-        }
-
-        new AttemptLogin().execute();
+    public void readFeed(View view) {
+        new insertCourseSpecs().execute();
     }
 
-    //AsyncTask is a seperate thread than the thread that runs the GUI
-    //Any type of networking should be done with asynctask.
-    class AttemptLogin extends AsyncTask<String, String, String> {
-
-        //three methods get called, first preExecture, then do in background, and once do
-        //in back ground is completed, the onPost execture method will be called.
+    class insertCourseSpecs extends AsyncTask<String, String, String> {
 
         @Override
         protected void onPreExecute() {
@@ -259,13 +265,111 @@ public class MainActivity extends AppCompatActivity {
             int success;
 
             try {
-                // Building Parameters
+
                 List<NameValuePair> params = new ArrayList<NameValuePair>();
-//                params.add(new BasicNameValuePair("username", "ayush13027@iiitd.ac.in"));
-//                params.add(new BasicNameValuePair("password", "password"));
+
+                params.add(new BasicNameValuePair("coursename", "Applied Cryptography"));
+                params.add(new BasicNameValuePair("instructor", "Somitra Sanadhya"));
+
+                Log.d("request!", "starting");
+
+                JSONObject json = jsonParser.makeHttpRequest(READ_FEEDBACK_URL, "POST", params);
+
+                Log.d("Login attempt", json.toString());
+
+                success = json.getInt(TAG_SUCCESS);
+                if (success == 1) {
+                    Log.d("Login Successful!", json.toString());
+
+                    mComments = json.getJSONArray(TAG_POSTS);
+                    Log.d("Login Successful!", mComments.toString());
+
+
+                    try {
+
+                        for (int i = 0; i < mComments.length(); i++) {
+                            JSONObject c = mComments.getJSONObject(i);
+
+                            String name = c.getString(TAG_NAME);
+                            String upvote = c.getString(TAG_UPVOTE);
+                            String downvote = c.getString(TAG_DOWNVOTE);
+                            String review = c.getString(TAG_REVIEW);
+
+                            HashMap<String, String> map = new HashMap<String, String>();
+
+                            map.put(name, review);
+
+                            mCommentList.add(map);
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    return json.getString(TAG_MESSAGE);
+                } else {
+                    Log.d("Login Failure!", json.getString(TAG_MESSAGE));
+                    return json.getString(TAG_MESSAGE);
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+
+        }
+
+        protected void onPostExecute(String file_url) {
+
+        }
+
+    }
+
+    String feedBack, grade, load, heavy;
+    String rollNumber = LoginActivity.rollNumber;
+
+    public void submitFeed(View view) {
+        EditText et = (EditText) findViewById(R.id.feedbackEditText);
+        feedBack = et.getText().toString();
+
+        Spinner lsp = (Spinner) findViewById(R.id.loadSpinner);
+        load = lsp.getSelectedItem().toString();
+
+        Spinner gsp = (Spinner) findViewById(R.id.avGradeSpinner);
+        grade = gsp.getSelectedItem().toString();
+
+        RadioButton rb = (RadioButton) findViewById(R.id.yesProjectButton);
+        if (rb.isSelected()) {
+            heavy = "1";
+        } else {
+            heavy = "0";
+        }
+
+        new insertFeedback().execute();
+    }
+
+    class insertFeedback extends AsyncTask<String, String, String> {
+
+        //three methods get called, first preExecture, then do in background, and once do
+        //in back ground is completed, the onPost execture method will be called.
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... args) {
+
+            int success;
+
+            try {
+
+                List<NameValuePair> params = new ArrayList<>();
 
                 params.add(new BasicNameValuePair("cid", "1"));
-                params.add(new BasicNameValuePair("rnum", "2013117"));
+                params.add(new BasicNameValuePair("rnum", rollNumber));
                 params.add(new BasicNameValuePair("review", feedBack));
                 params.add(new BasicNameValuePair("grade", grade));
                 params.add(new BasicNameValuePair("wload", load));
@@ -275,7 +379,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Log.d("request!", "starting");
                 // getting product details by making HTTP request
-                JSONObject json = jsonParser.makeHttpRequest(FEEDBACK_URL, "POST", params);
+                JSONObject json = jsonParser.makeHttpRequest(ADD_FEEDBACK_URL, "POST", params);
 
                 // check your log for json response
                 Log.d("Login attempt", json.toString());
@@ -284,17 +388,10 @@ public class MainActivity extends AppCompatActivity {
                 success = json.getInt(TAG_SUCCESS);
                 if (success == 1) {
                     Log.d("Login Successful!", json.toString());
-                    //Intent i = new Intent(MainActivity.this, ReadComments.class);
-//                    Toast.makeText(MainActivity.this, "Login Successful!", Toast.LENGTH_LONG).show();
-
-                    //finish();
-                    //startActivity(i);
                     return json.getString(TAG_MESSAGE);
-                }else{
+                } else {
                     Log.d("Login Failure!", json.getString(TAG_MESSAGE));
-//                    Toast.makeText(MainActivity.this, "Login Failed!", Toast.LENGTH_LONG).show();
                     return json.getString(TAG_MESSAGE);
-
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -309,4 +406,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+
 }
