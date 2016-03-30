@@ -7,6 +7,9 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -161,6 +164,24 @@ public class AllCoursesFragment extends Fragment implements AdapterView.OnItemCl
 
         // do something
         Toast.makeText(getActivity(), item.title, Toast.LENGTH_SHORT).show();
+        if(position==0)
+        {
+            // Create new fragment and transaction
+            ListFragment newFragment = new CoreCourses();
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+// Replace whatever is in the fragment_container view with this fragment,
+// and add the transaction to the back stack if needed
+            transaction.replace(R.id.container, newFragment);
+            transaction.addToBackStack(null);
+
+// Commit the transaction
+            transaction.commit();
+        }
+        else
+        {
+            Log.i("LOGGING", "poisition" + position);
+        }
     }
     public static AllCoursesFragment newInstance() {
         AllCoursesFragment fragment = new AllCoursesFragment();
