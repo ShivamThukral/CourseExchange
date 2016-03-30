@@ -59,6 +59,7 @@ public class CoreCourses extends ListFragment {
 
         // do something
         Toast.makeText(getActivity(), item.title, Toast.LENGTH_SHORT).show();
+
     }
 
     /*  @Override

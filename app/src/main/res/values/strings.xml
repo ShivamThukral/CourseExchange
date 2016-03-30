@@ -64,6 +64,19 @@
     <string name="graph_theory_txt">Graph Theory</string>
     <string name="graph_theory_dsc">MTH 303 (Somitra Sandhya)</string>
 
+    <string name="linear_algebra_txt">Linear Algebra</string>
+    <string name="linear_algebra_dsc">MTH 100 (Samaresh Chatterjee)</string>
+    <string name="digital_circuits_txt">Digital Circuits</string>
+    <string name="digital_circuits_dsc">ECE 100 (RN Biswas)</string>
+    <string name="intro_to_prog_txt">Introduction to Programming</string>
+    <string name="intro_to_prog_dsc">CSE 100 (H.B. Acharya)</string>
+    <string name="prob_stat_txt">Probability and Satistics</string>
+    <string name="prob_stat_dsc">MTH 101(Richa Singh)</string>
+    <string name="dsa_txt">Data Structure and Algorithms</string>
+    <string name="dsa_dsc">CSE 101 (Rahul Purandare)</string>
+    <string name="ied_txt">Introduction to Engineering Design</string>
+    <string name="ied_dsc">CSE ECE101 (R.N. Biswas)</string>
+
     <string name="icon_content_description">Sample Icon</string>
 
     <string name="loadText">Average Load Hrs/Week</string>

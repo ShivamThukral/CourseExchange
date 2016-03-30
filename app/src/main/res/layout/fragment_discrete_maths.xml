@@ -1,0 +1,237 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="15dp"
+        android:paddingLeft="50dp"
+        android:paddingRight="24dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Discrete Maths"
+            android:paddingLeft="45dp"
+            android:textSize="30dp"
+            android:id="@+id/courseName" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingLeft="50dp"
+        android:paddingRight="24dp">
+
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/profile_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/somitra_sir"
+            app:border_color="@color/frame"
+            app:border_width="1dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Somitra Sanadhaya"
+            android:paddingTop="30dp"
+            android:paddingLeft="10dp"
+            android:textSize="20dp"
+            android:id="@+id/prof_name" />
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingLeft="50dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/linearLayout">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/circle"
+            android:gravity="center"
+            android:shadowColor="@android:color/white"
+            android:shadowRadius="10.0"
+            android:text="4"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:id="@+id/textView2"
+            />
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/circle"
+            android:gravity="center"
+            android:shadowColor="@android:color/white"
+            android:shadowRadius="10.0"
+            android:text="7.0"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:id="@+id/textView3"
+            android:layout_marginLeft="20dp"
+            />
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/circle"
+            android:gravity="center"
+            android:shadowColor="@android:color/white"
+            android:shadowRadius="10.0"
+            android:text="9.2"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:id="@+id/textView4"
+            android:layout_marginLeft="20dp"
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="15dp"
+        android:paddingLeft="80dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/linearLayout3">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A2A"
+            android:id="@+id/button"
+            />
+
+        <Button
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:id="@+id/button2"
+            android:layout_marginLeft="20dp"
+
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/frame"
+        android:orientation="horizontal">
+
+        <!-- the icon view -->
+        <ImageView android:id="@+id/ivIcon"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginLeft="10dp"
+            android:padding="5dp"
+            android:src="@drawable/ayush"
+            android:contentDescription="@string/icon_content_description"
+            android:scaleType="fitXY"
+            android:layout_alignParentLeft="true" />
+
+        <!-- the container view for the title and description -->
+        <LinearLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:layout_toRightOf="@id/ivIcon"
+            android:layout_centerVertical="true" >
+
+            <!-- the title view -->
+            <TextView android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:text="Ayush Shah"
+                android:textAppearance="@android:style/TextAppearance.Medium" />
+
+            <!-- the description view -->
+            <TextView android:id="@+id/tvDescription"
+                android:layout_below="@id/tvTitle"
+                android:layout_width="wrap_content"
+                android:paddingTop="5dp"
+                android:layout_height="wrap_content"
+                android:text="Very Good Course"
+                android:textAppearance="@android:style/TextAppearance.Small" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/frame"
+        android:orientation="horizontal">
+
+        <!-- the icon view -->
+        <ImageView android:id="@+id/ivIcon1"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginLeft="10dp"
+            android:padding="5dp"
+            android:src="@drawable/virender"
+            android:contentDescription="@string/icon_content_description"
+            android:scaleType="fitXY"
+            android:layout_alignParentLeft="true" />
+
+        <!-- the container view for the title and description -->
+        <LinearLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:layout_toRightOf="@id/ivIcon"
+            android:layout_centerVertical="true" >
+
+            <!-- the title view -->
+            <TextView android:id="@+id/tvTitle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:text="Virender Singh"
+                android:textAppearance="@android:style/TextAppearance.Medium" />
+
+            <!-- the description view -->
+            <TextView android:id="@+id/tvDescription1"
+                android:layout_below="@id/tvTitle"
+                android:layout_width="wrap_content"
+                android:paddingTop="5dp"
+                android:layout_height="wrap_content"
+                android:text="Excellent Course for Math Lovers"
+                android:textAppearance="@android:style/TextAppearance.Small" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>
