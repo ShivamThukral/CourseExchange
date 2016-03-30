@@ -23,6 +23,11 @@
             android:checked="false"
             android:title="@string/menu_discover" />
         <item
+            android:id="@+id/nav_feedback"
+            android:icon="@drawable/ic_lightbulb_outline_black_24dp"
+            android:checked="false"
+            android:title="@string/menu_feedback" />
+        <item
             android:id="@+id/nav_Streams"
             android:icon="@drawable/ic_view_stream_black_24dp"
             android:checked="false"

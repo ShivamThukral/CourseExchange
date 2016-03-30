@@ -30,7 +30,7 @@ class ListViewItem {
     }
 }
 
- class ListViewDemoAdapter extends ArrayAdapter<ListViewItem> {
+class ListViewDemoAdapter extends ArrayAdapter<ListViewItem> {
 
     public ListViewDemoAdapter(Context context, List<ListViewItem> items) {
         super(context, R.layout.listview_item, items);

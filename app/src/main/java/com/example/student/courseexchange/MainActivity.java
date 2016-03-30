@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.TextView;
 
+
 public class MainActivity extends AppCompatActivity
          {
 
@@ -163,6 +164,9 @@ public class MainActivity extends AppCompatActivity
                          break;
                      case R.id.nav_discover:
                          fragment = DiscoverFragment.newInstance();
+                         break;
+                     case R.id.nav_feedback:
+                         fragment = FeedbackFragment.newInstance();
                          break;
                      case R.id.nav_Streams:
                          fragment = StreamsFragment.newInstance();
