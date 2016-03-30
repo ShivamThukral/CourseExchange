@@ -4,4 +4,11 @@
     <color name="frame_solid">#eee</color>
     <color name="frame_background">#bcbcbc</color>
     <color name="frame_blue">#7ec0ee</color>
+
+    <color name="primary">#EC407A</color>
+    <color name="primary_dark">#D81B60</color>
+    <color name="primary_darker">#AD1457</color>
+    <color name="accent">#FFFFFF</color>
+    <color name="iron">#CCCCCC</color>
+    <color name="white">#FFFFFF</color>
 </resources>
