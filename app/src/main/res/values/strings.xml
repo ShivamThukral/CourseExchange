@@ -69,5 +69,14 @@
     <string name="loadText">Average Load Hrs/Week</string>
     <string name="gradeText">Average Grade</string>
 
+    <!--Mobile Computing Streams-->
+    <string name="mc_txt">Mobile Computing</string>
+    <string name="mc_dsc">CSE 535 (Vinayak Naik)</string>
+    <string name="wn_txt">Wireless Networks</string>
+    <string name="wn_dsc">CSE538 (Sanjit Kaul) </string>
+    <string name="an_txt">Advanced Networks</string>
+    <string name="an_dsc">CSE534 (Dheeraj Sanghi)</string>
+
+
 
 </resources>

@@ -9,6 +9,9 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -172,9 +175,28 @@ public class StreamsFragment extends Fragment implements AdapterView.OnItemClick
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         GridViewItem3 item = mItems.get(position);
-
         // do something
         Toast.makeText(getActivity(), item.title, Toast.LENGTH_SHORT).show();
+
+        if(position==0)
+        {
+            // Create new fragment and transaction
+            ListFragment newFragment = new MobileComputingStream();
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+// Replace whatever is in the fragment_container view with this fragment,
+// and add the transaction to the back stack if needed
+            transaction.replace(R.id.container, newFragment);
+            transaction.addToBackStack(null);
+
+// Commit the transaction
+            transaction.commit();
+        }
+        else
+        {
+            Log.i("LOGGING","poisition"+position);
+        }
+
     }
     public static StreamsFragment newInstance() {
         StreamsFragment fragment = new StreamsFragment();
