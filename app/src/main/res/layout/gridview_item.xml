@@ -18,15 +18,15 @@
         android:background="@drawable/frame" >-->
 
     <!-- the ImageView for the icon -->
-     <ImageView android:id="@+id/gvIcon"
+    <ImageView android:id="@+id/gvIcon"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:contentDescription="@string/icon_content_description"
         android:scaleType="fitXY"
         android:adjustViewBounds="true"
         android:padding="-10dp"
-         android:verticalSpacing="00dp"
-         android:horizontalSpacing="00dp"
+        android:verticalSpacing="00dp"
+        android:horizontalSpacing="00dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true" />
 
@@ -43,7 +43,7 @@
         android:textStyle="bold"
         android:textSize="15sp" />
 
-  <!--  </RelativeLayout>-->
+    <!--  </RelativeLayout>-->
     <!--android:textAppearance="@android:style/TextAppearance.Small"-->
 
 </RelativeLayout>
