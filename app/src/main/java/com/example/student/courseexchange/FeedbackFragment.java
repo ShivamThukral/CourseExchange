@@ -38,14 +38,14 @@ public class FeedbackFragment extends Fragment {
         Spinner loadSpinner = (Spinner) rootView.findViewById(R.id.loadSpinner);
 
         List<String> loadCategories = new ArrayList<String>();
-        loadCategories.add("0-10");
-        loadCategories.add("10-20");
-        loadCategories.add("20-30");
-        loadCategories.add("30-40");
-        loadCategories.add("40-50");
-        loadCategories.add("50-60");
-        loadCategories.add("60-70");
-        loadCategories.add("70-80");
+        loadCategories.add("3");
+        loadCategories.add("5");
+        loadCategories.add("7");
+        loadCategories.add("9");
+        loadCategories.add("11");
+        loadCategories.add("13");
+        loadCategories.add("15");
+        loadCategories.add("18");
 
         ArrayAdapter<String> loadDataAdapter = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_spinner_item, loadCategories);
         loadDataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
@@ -54,7 +54,7 @@ public class FeedbackFragment extends Fragment {
         Spinner gradeSpinner = (Spinner) rootView.findViewById(R.id.avGradeSpinner);
 
         List<String> gradeCategories = new ArrayList<String>();
-        gradeCategories.add("<4");
+        gradeCategories.add("4");
         gradeCategories.add("5");
         gradeCategories.add("6");
         gradeCategories.add("7");

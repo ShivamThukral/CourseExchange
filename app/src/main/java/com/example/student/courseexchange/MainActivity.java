@@ -2,6 +2,7 @@ package com.example.student.courseexchange;
 
 import android.content.res.Configuration;
 import android.graphics.Typeface;
+import android.os.AsyncTask;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -11,64 +12,86 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v4.widget.DrawerLayout;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class MainActivity extends AppCompatActivity
-         {
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class MainActivity extends AppCompatActivity {
 
 
     private CharSequence mTitle;
-             private DrawerLayout mDrawer;
-             private Toolbar toolbar;
-             private NavigationView nvDrawer;
-             Fragment fragment = new BlankFragment();
-             ActionBarDrawerToggle drawerToggle;
-             @Override
+    private DrawerLayout mDrawer;
+    private Toolbar toolbar;
+    private NavigationView nvDrawer;
+    Fragment fragment = new BlankFragment();
+    ActionBarDrawerToggle drawerToggle;
+
+    JSONParser jsonParser = new JSONParser();
+
+    private static final String FEEDBACK_URL = "http://192.168.1.4/webservice/add_feedback.php";
+
+    //JSON element ids from repsonse of php script:
+    private static final String TAG_SUCCESS = "success";
+    private static final String TAG_MESSAGE = "message";
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
 
-                 // Set a Toolbar to replace the ActionBar.
-                 toolbar = (Toolbar) findViewById(R.id.toolbar);
-                 setSupportActionBar(toolbar);
+        // Set a Toolbar to replace the ActionBar.
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-                 // Find our drawer view
-                 mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-                 // Find our drawer view
-                 nvDrawer = (NavigationView) findViewById(R.id.navigation_drawer);
-                 drawerToggle = setupDrawerToggle();
+        // Find our drawer view
+        mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        // Find our drawer view
+        nvDrawer = (NavigationView) findViewById(R.id.navigation_drawer);
+        drawerToggle = setupDrawerToggle();
 
-                 // Tie DrawerLayout events to the ActionBarToggle
-                 mDrawer.setDrawerListener(drawerToggle);
+        // Tie DrawerLayout events to the ActionBarToggle
+        mDrawer.setDrawerListener(drawerToggle);
 
-                 // Setup drawer view
-                 setupDrawerContent(nvDrawer);
+        // Setup drawer view
+        setupDrawerContent(nvDrawer);
 
 
     }
 
-             @Override
-             public void onBackPressed() {
-                 if (mDrawer.isDrawerOpen(nvDrawer)) {
-                     mDrawer.closeDrawer(nvDrawer);
-                 } else {
-                     super.onBackPressed();
-                 }
-             }
+    @Override
+    public void onBackPressed() {
+        if (mDrawer.isDrawerOpen(nvDrawer)) {
+            mDrawer.closeDrawer(nvDrawer);
+        } else {
+            super.onBackPressed();
+        }
+    }
 
-             @Override
-             public boolean onPrepareOptionsMenu(final Menu menu) {
-                 setupDrawerContent(nvDrawer);
-                 return super.onPrepareOptionsMenu(menu);
-             }
-             private ActionBarDrawerToggle setupDrawerToggle() {
-                 return new ActionBarDrawerToggle(this, mDrawer, toolbar, R.string.drawer_open,  R.string.drawer_close);
-             }
+    @Override
+    public boolean onPrepareOptionsMenu(final Menu menu) {
+        setupDrawerContent(nvDrawer);
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    private ActionBarDrawerToggle setupDrawerToggle() {
+        return new ActionBarDrawerToggle(this, mDrawer, toolbar, R.string.drawer_open, R.string.drawer_close);
+    }
 
     public void onSectionAttached(int number) {
         switch (number) {
@@ -115,84 +138,175 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+    // `onPostCreate` called when activity start-up is complete after `onStart()`
+    // NOTE! Make sure to override the method with only a single `Bundle` argument
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        // Sync the toggle state after onRestoreInstanceState has occurred.
+        drawerToggle.syncState();
 
-             // `onPostCreate` called when activity start-up is complete after `onStart()`
-             // NOTE! Make sure to override the method with only a single `Bundle` argument
-             @Override
-             protected void onPostCreate(Bundle savedInstanceState) {
-                 super.onPostCreate(savedInstanceState);
-                 // Sync the toggle state after onRestoreInstanceState has occurred.
-                 drawerToggle.syncState();
+    }
 
-             }
-             private void setupDrawerContent(NavigationView navigationView) {
-                 navigationView.setNavigationItemSelectedListener(
-                         new NavigationView.OnNavigationItemSelectedListener() {
-                             @Override
-                             public boolean onNavigationItemSelected(MenuItem menuItem) {
-                                 selectDrawerItem(menuItem);
-                                 return true;
-                             }
-                         });
-             }
+    private void setupDrawerContent(NavigationView navigationView) {
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        selectDrawerItem(menuItem);
+                        return true;
+                    }
+                });
+    }
 
-             @Override
-             public void onConfigurationChanged(Configuration newConfig) {
-                 super.onConfigurationChanged(newConfig);
-                 // Pass any configuration change to the drawer toggles
-                 drawerToggle.onConfigurationChanged(newConfig);
-             }
-             public void selectDrawerItem(MenuItem menuItem) {
-                 // Create a new fragment and specify the fragment to show based on nav item clicked
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        // Pass any configuration change to the drawer toggles
+        drawerToggle.onConfigurationChanged(newConfig);
+    }
 
-                 Class fragmentClass;
-                 switch(menuItem.getItemId()) {
-                     case R.id.nav_myCourses:
-                         fragment = MyCoursesFragment.newInstance();
-                         break;
-                     case R.id.nav_allCourses:
-                         fragment = AllCoursesFragment.newInstance();
-                         break;
-                     case R.id.nav_courseFeed:
-                         fragment = CourseFeedFragment.newInstance();
-                         break;
-                     case R.id.nav_aboutUs:
-                         fragment = AboutUsFragment.newInstance();
-                         break;
-                     case R.id.nav_help:
-                         fragment = HelpFragment.newInstance();
-                         break;
-                     case R.id.nav_discover:
-                         fragment = DiscoverFragment.newInstance();
-                         break;
-                     case R.id.nav_feedback:
-                         fragment = FeedbackFragment.newInstance();
-                         break;
-                     case R.id.nav_Streams:
-                         fragment = StreamsFragment.newInstance();
-                        // fragment = new BlankFragment();
-                         break;
-                     default:
-                         fragment = new BlankFragment();
-                 }
+    public void selectDrawerItem(MenuItem menuItem) {
+        // Create a new fragment and specify the fragment to show based on nav item clicked
 
-                 try {
-                     //fragment = (Fragment) fragmentClass.newInstance();
-                 } catch (Exception e) {
-                     e.printStackTrace();
-                 }
+        Class fragmentClass;
+        switch (menuItem.getItemId()) {
+            case R.id.nav_myCourses:
+                fragment = MyCoursesFragment.newInstance();
+                break;
+            case R.id.nav_allCourses:
+                fragment = AllCoursesFragment.newInstance();
+                break;
+            case R.id.nav_courseFeed:
+                fragment = CourseFeedFragment.newInstance();
+                break;
+            case R.id.nav_aboutUs:
+                fragment = AboutUsFragment.newInstance();
+                break;
+            case R.id.nav_help:
+                fragment = HelpFragment.newInstance();
+                break;
+            case R.id.nav_discover:
+                fragment = DiscoverFragment.newInstance();
+                break;
+            case R.id.nav_feedback:
+                fragment = FeedbackFragment.newInstance();
+                break;
+            case R.id.nav_Streams:
+                fragment = StreamsFragment.newInstance();
+                // fragment = new BlankFragment();
+                break;
+            default:
+                fragment = new BlankFragment();
+        }
 
-                 // Insert the fragment by replacing any existing fragment
-                 FragmentManager fragmentManager = getSupportFragmentManager();
-                 fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
+        try {
+            //fragment = (Fragment) fragmentClass.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-                 // Highlight the selected item has been done by NavigationView
-                 menuItem.setChecked(true);
-                 // Set action bar title
-                 setTitle(menuItem.getTitle());
-                 // Close the navigation drawer
-                 mDrawer.closeDrawers();
-             }
+        // Insert the fragment by replacing any existing fragment
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
 
+        // Highlight the selected item has been done by NavigationView
+        menuItem.setChecked(true);
+        // Set action bar title
+        setTitle(menuItem.getTitle());
+        // Close the navigation drawer
+        mDrawer.closeDrawers();
+    }
 
-         }
+    String feedBack, rollNumber, grade, load, heavy;
+
+    public void submitFeed(View view) {
+        EditText et=(EditText)findViewById(R.id.feedbackEditText);
+        feedBack=et.getText().toString();
+
+        Spinner lsp = (Spinner)findViewById(R.id.loadSpinner);
+        load = lsp.getSelectedItem().toString();
+
+        Spinner gsp = (Spinner)findViewById(R.id.avGradeSpinner);
+        grade = gsp.getSelectedItem().toString();
+
+        RadioButton rb = (RadioButton)findViewById(R.id.yesProjectButton);
+        if(rb.isSelected()){
+            heavy = "1";
+        }else{
+            heavy = "0";
+        }
+
+        new AttemptLogin().execute();
+    }
+
+    //AsyncTask is a seperate thread than the thread that runs the GUI
+    //Any type of networking should be done with asynctask.
+    class AttemptLogin extends AsyncTask<String, String, String> {
+
+        //three methods get called, first preExecture, then do in background, and once do
+        //in back ground is completed, the onPost execture method will be called.
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+        }
+
+        @Override
+        protected String doInBackground(String... args) {
+
+            int success;
+
+            try {
+                // Building Parameters
+                List<NameValuePair> params = new ArrayList<NameValuePair>();
+//                params.add(new BasicNameValuePair("username", "ayush13027@iiitd.ac.in"));
+//                params.add(new BasicNameValuePair("password", "password"));
+
+                params.add(new BasicNameValuePair("cid", "1"));
+                params.add(new BasicNameValuePair("rnum", "2013117"));
+                params.add(new BasicNameValuePair("review", feedBack));
+                params.add(new BasicNameValuePair("grade", grade));
+                params.add(new BasicNameValuePair("wload", load));
+                params.add(new BasicNameValuePair("prj", heavy));
+                params.add(new BasicNameValuePair("up", "1"));
+                params.add(new BasicNameValuePair("down", "0"));
+
+                Log.d("request!", "starting");
+                // getting product details by making HTTP request
+                JSONObject json = jsonParser.makeHttpRequest(FEEDBACK_URL, "POST", params);
+
+                // check your log for json response
+                Log.d("Login attempt", json.toString());
+
+                // json success tag
+                success = json.getInt(TAG_SUCCESS);
+                if (success == 1) {
+                    Log.d("Login Successful!", json.toString());
+                    //Intent i = new Intent(MainActivity.this, ReadComments.class);
+//                    Toast.makeText(MainActivity.this, "Login Successful!", Toast.LENGTH_LONG).show();
+
+                    //finish();
+                    //startActivity(i);
+                    return json.getString(TAG_MESSAGE);
+                }else{
+                    Log.d("Login Failure!", json.getString(TAG_MESSAGE));
+//                    Toast.makeText(MainActivity.this, "Login Failed!", Toast.LENGTH_LONG).show();
+                    return json.getString(TAG_MESSAGE);
+
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+
+        }
+
+        protected void onPostExecute(String file_url) {
+
+        }
+
+    }
+}
