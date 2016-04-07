@@ -60,8 +60,8 @@ public class MainActivity extends AppCompatActivity {
 
     JSONParser jsonParser = new JSONParser();
 
-    private static final String ADD_FEEDBACK_URL = "http://192.168.1.4/webservice/add_feedback.php";
-    private static final String READ_FEEDBACK_URL = "http://192.168.1.4/webservice/read_feedback.php";
+    private static final String ADD_FEEDBACK_URL = "http://192.168.49.231/webservice/add_feedback.php";
+    private static final String READ_FEEDBACK_URL = "http://192.168.49.231/webservice/read_feedback.php";
 
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
     private JSONArray mComments = null;
     public static ArrayList<HashMap<String, String>> mCommentList = new ArrayList<>();
-
+    public static String COURSENAME = "Applied Cryptography", PROFNAME = "Somitra Sanadhya";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -204,6 +204,9 @@ public class MainActivity extends AppCompatActivity {
                 fragment = AllCoursesFragment.newInstance();
                 break;
             case R.id.nav_courseFeed: {
+                insertCourseSpecs ics = new insertCourseSpecs();
+                ics.setCourse(COURSENAME);
+                ics.setProf(PROFNAME);
                 new insertCourseSpecs().execute();
                 fragment = CourseFeedFragment.newInstance();
             }
@@ -247,11 +250,32 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void readFeed(View view) {
-        new insertCourseSpecs().execute();
+    public void readFeed(View view, String course, String prof) {
+        insertCourseSpecs ics = new insertCourseSpecs();
+        ics.setCourse(course);
+        ics.setProf(prof);
+        Log.i("TESTING",course+prof);
+        System.out.println("Course0: " + course);
+        System.out.println("Prof0: "+prof);
+        ics.execute();
+
+        //Log.i("TESTING",course+prof);
+        //System.out.println("Course0: " + course);
+        //System.out.println("Prof0: "+prof);
     }
 
     class insertCourseSpecs extends AsyncTask<String, String, String> {
+
+        String course;
+        String prof;
+
+        public void setCourse(String course){
+            this.course = course;
+        }
+
+        public void setProf(String prof){
+            this.course = prof;
+        }
 
         @Override
         protected void onPreExecute() {
@@ -267,9 +291,10 @@ public class MainActivity extends AppCompatActivity {
             try {
 
                 List<NameValuePair> params = new ArrayList<NameValuePair>();
-
-                params.add(new BasicNameValuePair("coursename", "Applied Cryptography"));
-                params.add(new BasicNameValuePair("instructor", "Somitra Sanadhya"));
+                System.out.println("Course: "+course);
+                System.out.println("Prof: "+prof);
+                params.add(new BasicNameValuePair("coursename", COURSENAME));
+                params.add(new BasicNameValuePair("instructor", PROFNAME));
 
                 Log.d("request!", "starting");
 
@@ -347,6 +372,28 @@ public class MainActivity extends AppCompatActivity {
         }
 
         new insertFeedback().execute();
+
+        //new insertCourseSpecs().execute();
+        //new insertCourseSpecs().execute();
+        //for (int i = 0; i < 2; i++) {
+            readFeed(view, "Applied Cryptography", "Somitra Sanadhya");
+
+
+            fragment = CourseFeedFragment.newInstance();
+            // Insert the fragment by replacing any existing fragment
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
+
+            // Highlight the selected item has been done by NavigationView
+
+            // Set action bar title
+            setTitle("Reviews");
+
+            //readFeed(view);
+            // Close the navigation drawer
+            //mDrawer.closeDrawers();
+        //}
+
     }
 
     class insertFeedback extends AsyncTask<String, String, String> {
