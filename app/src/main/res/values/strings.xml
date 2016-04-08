@@ -40,6 +40,7 @@
     <string name="menu_feedback">Feedback</string>
     <string name="menu_Help">Help</string>
     <string name="menu_AboutUs">About Us</string>
+    <string name="menu_availableCourses">Available Courses</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -60,9 +61,9 @@
     <string name="dhcs_txt">Designing Human Centered Systems</string>
     <string name="dhcs_dsc">CSE 501 (Ponnurangam Kumaraguru)</string>
     <string name="number_theory_txt">Number Theory</string>
-    <string name="number_theory_dsc">MTH 502 (Somitra Sandhya)</string>
+    <string name="number_theory_dsc">MTH 502 (Somitra Sanadhya)</string>
     <string name="graph_theory_txt">Graph Theory</string>
-    <string name="graph_theory_dsc">MTH 303 (Somitra Sandhya)</string>
+    <string name="graph_theory_dsc">MTH 303 (Somitra Sanadhya)</string>
 
     <string name="linear_algebra_txt">Linear Algebra</string>
     <string name="linear_algebra_dsc">MTH 100 (Samaresh Chatterjee)</string>
@@ -90,6 +91,15 @@
     <string name="an_txt">Advanced Networks</string>
     <string name="an_dsc">CSE534 (Dheeraj Sanghi)</string>
 
+    <!-- Available Course -->
+    <string name="ac_appliedCrypto_txt">Applied Cryptography</string>
+    <string name="ac_appliedCrypto_dsc">CSE 546 (Somitra Sanadhya)</string>
+    <string name="ac_numberThoery_txt">Number Theory</string>
+    <string name="ac_numberThoery_dsc">MTH 502 (Somitra Sanadhya)</string>
+    <string name="ac_numberThoery1_txt">Number Theory</string>
+    <string name="ac_numberThoery1_dsc">MTH 502 (B. Shetty)</string>
+    <string name="ac_positivePsychology_txt">Positive Psychology</string>
+    <string name="ac_positivePsychology_dsc">HSS 216 (Akshay Kumar)</string>
 
 
 </resources>

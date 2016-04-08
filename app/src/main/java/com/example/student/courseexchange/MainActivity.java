@@ -62,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String ADD_FEEDBACK_URL = "http://192.168.49.231/webservice/add_feedback.php";
     private static final String READ_FEEDBACK_URL = "http://192.168.49.231/webservice/read_feedback.php";
+    //private static final String ADD_FEEDBACK_URL = "http://192.168.1.3/webservice/add_feedback.php";
+    //private static final String READ_FEEDBACK_URL = "http://192.168.1.3/webservice/read_feedback.php";
 
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
@@ -74,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
     private JSONArray mComments = null;
     public static ArrayList<HashMap<String, String>> mCommentList = new ArrayList<>();
-    public static String COURSENAME = "Applied Cryptography", PROFNAME = "Somitra Sanadhya";
+    public static String COURSENAME = "", PROFNAME = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         // Setup drawer view
         setupDrawerContent(nvDrawer);
 
-        new insertCourseSpecs().execute();
+        //new insertCourseSpecs().execute();
 
     }
 
@@ -205,9 +207,11 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.nav_courseFeed: {
                 insertCourseSpecs ics = new insertCourseSpecs();
-                ics.setCourse(COURSENAME);
-                ics.setProf(PROFNAME);
-                new insertCourseSpecs().execute();
+                //ics.setCourse(COURSENAME);
+                //ics.setProf(PROFNAME);
+                Log.e("COURSE0", MainActivity.COURSENAME);
+                Log.e("PROF0", MainActivity.PROFNAME);
+                ics.execute();
                 fragment = CourseFeedFragment.newInstance();
             }
             break;
@@ -225,6 +229,10 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.nav_Streams:
                 fragment = StreamsFragment.newInstance();
+                // fragment = new BlankFragment();
+                break;
+            case R.id.nav_availableCourses:
+                fragment = AvailableCourses.newInstance();
                 // fragment = new BlankFragment();
                 break;
             default:
@@ -250,13 +258,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void readFeed(View view, String course, String prof) {
+    public void readFeed(View view) {
         insertCourseSpecs ics = new insertCourseSpecs();
-        ics.setCourse(course);
-        ics.setProf(prof);
-        Log.i("TESTING",course+prof);
-        System.out.println("Course0: " + course);
-        System.out.println("Prof0: "+prof);
+    //    ics.setCourse(course);
+    //    ics.setProf(prof);
+        //Log.i("TESTING",course+prof);
+    //    System.out.println("Course0: " + course);
+    //    System.out.println("Prof0: "+prof);
         ics.execute();
 
         //Log.i("TESTING",course+prof);
@@ -265,17 +273,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     class insertCourseSpecs extends AsyncTask<String, String, String> {
-
-        String course;
-        String prof;
-
-        public void setCourse(String course){
-            this.course = course;
-        }
-
-        public void setProf(String prof){
-            this.course = prof;
-        }
+//
+//        String course;
+//        String prof;
+//
+//        public void setCourse(String course){
+//            this.course = course;
+//        }
+//
+//        public void setProf(String prof){
+//            this.prof = prof;
+//        }
 
         @Override
         protected void onPreExecute() {
@@ -291,10 +299,13 @@ public class MainActivity extends AppCompatActivity {
             try {
 
                 List<NameValuePair> params = new ArrayList<NameValuePair>();
-                System.out.println("Course: "+course);
-                System.out.println("Prof: "+prof);
-                params.add(new BasicNameValuePair("coursename", COURSENAME));
-                params.add(new BasicNameValuePair("instructor", PROFNAME));
+                //System.out.println("Course: "+course);
+                //System.out.println("Prof: "+prof);
+                Log.e("COURSE99", MainActivity.COURSENAME);
+                Log.e("PROF99", MainActivity.PROFNAME);
+
+                params.add(new BasicNameValuePair("coursename", MainActivity.COURSENAME));
+                params.add(new BasicNameValuePair("instructor", MainActivity.PROFNAME));
 
                 Log.d("request!", "starting");
 
@@ -376,7 +387,7 @@ public class MainActivity extends AppCompatActivity {
         //new insertCourseSpecs().execute();
         //new insertCourseSpecs().execute();
         //for (int i = 0; i < 2; i++) {
-            readFeed(view, "Applied Cryptography", "Somitra Sanadhya");
+            readFeed(view);
 
 
             fragment = CourseFeedFragment.newInstance();
@@ -414,7 +425,7 @@ public class MainActivity extends AppCompatActivity {
             try {
 
                 List<NameValuePair> params = new ArrayList<>();
-
+//Make a switch case and set course id according to the selected course, display it in spinner/text/input
                 params.add(new BasicNameValuePair("cid", "1"));
                 params.add(new BasicNameValuePair("rnum", rollNumber));
                 params.add(new BasicNameValuePair("review", feedBack));

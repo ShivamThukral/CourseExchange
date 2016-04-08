@@ -32,6 +32,11 @@
             android:icon="@drawable/ic_view_stream_black_24dp"
             android:checked="false"
             android:title="@string/menu_streams" />
+        <item
+            android:id="@+id/nav_availableCourses"
+            android:icon="@drawable/ic_list_black_24dp"
+            android:checked="false"
+            android:title="@string/menu_availableCourses" />
     </group>
     <item android:title="Others">
         <menu>
