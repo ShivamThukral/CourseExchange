@@ -35,6 +35,19 @@ public class FeedbackFragment extends Fragment {
         final View rootView = inflater.inflate(R.layout.fragment_feedback, container, false);
 
         //Populate the spinner in the fragment
+        Spinner courseSpinner = (Spinner) rootView.findViewById(R.id.courseSpinner);
+
+        List<String> courseCategories = new ArrayList<String>();
+        courseCategories.add("Applied Cryptography");
+        courseCategories.add("Positive Psychology");
+        courseCategories.add("Number Theory");
+
+        ArrayAdapter<String> courseDataAdapter = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_spinner_item, courseCategories);
+        courseDataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        courseSpinner.setAdapter(courseDataAdapter);
+
+
+
         Spinner loadSpinner = (Spinner) rootView.findViewById(R.id.loadSpinner);
 
         List<String> loadCategories = new ArrayList<String>();

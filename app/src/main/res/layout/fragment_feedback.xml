@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/white"
     tools:context=".FeedbackFragment"
     android:orientation="vertical"
     android:padding="10dp">
@@ -14,16 +15,41 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:minWidth="200dp"
+            android:text="Course Name"
+            android:textSize="20dp"
+            android:layout_margin="15dp"
+            android:layout_weight="1" />
+        <Spinner
+            android:id="@+id/courseSpinner"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:prompt="@string/loadText"
+            android:layout_margin="15dp"
+            android:layout_weight="9"/>
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="200dp"
             android:text="Average Load/Week"
             android:textSize="20dp"
-            android:layout_margin="20dp"
+            android:layout_margin="15dp"
             android:layout_weight="1" />
         <Spinner
             android:id="@+id/loadSpinner"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:prompt="@string/loadText"
-            android:layout_margin="20dp"
+            android:layout_margin="15dp"
             android:layout_weight="9"/>
 
     </LinearLayout>
@@ -38,14 +64,14 @@
             android:minWidth="200dp"
             android:text="Average Grade"
             android:textSize="20dp"
-            android:layout_margin="20dp"
+            android:layout_margin="15dp"
             android:layout_weight="1" />
         <Spinner
             android:id="@+id/avGradeSpinner"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:prompt="@string/gradeText"
-            android:layout_margin="20dp"
+            android:layout_margin="15dp"
             android:layout_weight="9"/>
 
     </LinearLayout>
@@ -53,7 +79,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp">
+        android:layout_margin="15dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -91,7 +117,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="100dp"
-        android:layout_margin="20dp"
+        android:layout_margin="15dp"
         android:hint="Please fill your feedback here."
         android:id="@+id/feedbackEditText"/>
 
@@ -99,10 +125,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Submit"
-        android:layout_margin="20dp"
+        android:layout_margin="15dp"
         android:onClick="submitFeed"
         android:id="@+id/feedbackSubmitButton"
-        android:layout_gravity="right" />
+        android:layout_gravity="right"
+        android:background="@color/primary_darker"
+        android:textColor="@color/white" />
 
 
 </LinearLayout>

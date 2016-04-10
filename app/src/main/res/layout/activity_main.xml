@@ -42,8 +42,8 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="@android:color/white"
-        app:headerLayout="@layout/nav_header"
         app:menu="@menu/drawer_view" />
+<!--    app:headerLayout="@layout/nav_header"-->
 
     <!--&lt;!&ndash; As the main content view, the view below consumes the entire
          space available using match_parent in both dimensions. &ndash;&gt;

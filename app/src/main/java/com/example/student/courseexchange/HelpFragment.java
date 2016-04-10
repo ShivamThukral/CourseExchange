@@ -4,9 +4,11 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 
 public class HelpFragment extends Fragment {
@@ -29,6 +31,7 @@ public class HelpFragment extends Fragment {
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
      }
 
@@ -48,6 +51,30 @@ public class HelpFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
+    }
+    public void dismiss(View v) {
+        getActivity().finish();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
+                    // handle back button's click listener
+                   // Toast.makeText(getActivity(), "Back press", Toast.LENGTH_SHORT).show();
+                    dismiss(v);
+                    return true;
+                }
+                return false;
+            }
+        });
+
     }
 
 

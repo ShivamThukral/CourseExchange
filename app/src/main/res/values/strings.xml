@@ -102,4 +102,8 @@
     <string name="ac_positivePsychology_dsc">HSS 216 (Akshay Kumar)</string>
 
 
+    <string name="help_text">Please feel free to contact our team members in case of any assistance.</string>
+    <string name="aboutus_text"> We at IIITD try to make things simpler. We try to help those who find it difficult to choose what course to take. We are a group of dedicated programmers who tried to solve a real world problem.</string>
+
+
 </resources>

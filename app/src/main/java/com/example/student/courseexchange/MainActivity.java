@@ -90,6 +90,23 @@ public class MainActivity extends AppCompatActivity {
         mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         // Find our drawer view
         nvDrawer = (NavigationView) findViewById(R.id.navigation_drawer);
+        Bundle extras = getIntent().getExtras();
+        String email;
+
+        if (extras != null) {
+            email = extras.getString("email");
+            if(email!=null)
+            {
+                View hView =  nvDrawer.inflateHeaderView(R.layout.nav_header);
+                TextView email_id = (TextView)hView.findViewById(R.id.email_ID);
+                email_id.setText(email);
+            }
+            // and get whatever type user account id is
+        }
+
+
+
+
         drawerToggle = setupDrawerToggle();
 
         // Tie DrawerLayout events to the ActionBarToggle

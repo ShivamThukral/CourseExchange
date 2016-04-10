@@ -179,6 +179,10 @@ public class DiscoverFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        if (container != null) {
+            container.removeAllViews();
+        }
+
       View fragmentView =   inflater.inflate(R.layout.fragment_discover, container, false);
         expandableListView = (ExpandableListView) fragmentView.findViewById(R.id.expandableListView);
         expandableListDetail = ExpandableListDataPump.getData();
@@ -189,9 +193,9 @@ public class DiscoverFragment extends Fragment {
 
             @Override
             public void onGroupExpand(int groupPosition) {
-                Toast.makeText(getActivity(),
-                        expandableListTitle.get(groupPosition) + " List Expanded.",
-                        Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getActivity(),
+                 //       expandableListTitle.get(groupPosition) + " List Expanded.",
+                  //      Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -199,9 +203,9 @@ public class DiscoverFragment extends Fragment {
 
             @Override
             public void onGroupCollapse(int groupPosition) {
-                Toast.makeText(getActivity(),
-                        expandableListTitle.get(groupPosition) + " List Collapsed.",
-                        Toast.LENGTH_SHORT).show();
+           //     Toast.makeText(getActivity(),
+             //           expandableListTitle.get(groupPosition) + " List Collapsed.",
+               //         Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -210,15 +214,15 @@ public class DiscoverFragment extends Fragment {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
-                Toast.makeText(
-                        getActivity(),
-                        expandableListTitle.get(groupPosition)
-                                + " -> "
-                                + expandableListDetail.get(
-                                expandableListTitle.get(groupPosition)).get(
-                                childPosition), Toast.LENGTH_SHORT
-                )
-                        .show();
+      //          Toast.makeText(
+    //                    getActivity(),
+  //                      expandableListTitle.get(groupPosition)
+//                                + " -> "
+        //                        + expandableListDetail.get(
+          ///                      expandableListTitle.get(groupPosition)).get(
+             //                   childPosition), Toast.LENGTH_SHORT
+               // )
+                 //       .show();
                 return false;
             }
         });
@@ -233,13 +237,11 @@ return fragmentView;
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-
     }
 
 
